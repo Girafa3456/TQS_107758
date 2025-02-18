@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.example.MyStackTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.055 s <<< FAILURE! - in com.example.MyStackTest
+xStaysInStackAfterPeek  Time elapsed: 0.007 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <500> but was: <null>
+	at com.example.MyStackTest.xStaysInStackAfterPeek(MyStackTest.java:60)
+
+NoSuchElementExceptionOnEmptyStackAfterPop  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.util.NoSuchElementException to be thrown, but nothing was thrown.
+	at com.example.MyStackTest.NoSuchElementExceptionOnEmptyStackAfterPop(MyStackTest.java:85)
+
+NoSuchElementExceptionOnEmptyStackAfterPeek  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.util.NoSuchElementException to be thrown, but nothing was thrown.
+	at com.example.MyStackTest.NoSuchElementExceptionOnEmptyStackAfterPeek(MyStackTest.java:91)
+
+notEmptyNorNullSizeAfterPush  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.MyStackTest.notEmptyNorNullSizeAfterPush(MyStackTest.java:41)
+
+xPopAfterPush  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <7> but was: <null>
+	at com.example.MyStackTest.xPopAfterPush(MyStackTest.java:50)
+
