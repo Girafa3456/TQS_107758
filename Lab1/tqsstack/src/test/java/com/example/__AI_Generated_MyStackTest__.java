@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
-class AI_Generated_MyStackTest {
+class __AI_Generated_MyStackTest__ {
 
     private MyStack<Integer> stack;
 

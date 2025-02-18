@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.AI_Generated_MyStackTest" time="0.045" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.MyStackTest" time="0.057" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire/surefirebooter15855432360673671470.jar /home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire 2025-02-18T13-12-16_829-jvmRun1 surefire8533351890093035240tmp surefire_010896173766332511912tmp"/>
+    <property name="sun.java.command" value="/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire/surefirebooter18078138835869789572.jar /home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire 2025-02-18T13-17-31_968-jvmRun1 surefire13126136439616466733tmp surefire_03819819016015992280tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/test-classes:/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/classes:/home/goncalo/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/home/goncalo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/goncalo/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/goncalo/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/goncalo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/goncalo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/goncalo/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/goncalo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire/surefirebooter15855432360673671470.jar"/>
+    <property name="surefire.real.class.path" value="/home/goncalo/Documentos/TQS_107758/Lab1/tqsstack/target/surefire/surefirebooter18078138835869789572.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+7-Ubuntu-122.04.1"/>
     <property name="user.name" value="goncalo"/>
@@ -53,12 +53,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPeekFromEmptyStackThrowsException" classname="com.example.AI_Generated_MyStackTest" time="0.024"/>
-  <testcase name="testBoundedStackPreventsOverflow" classname="com.example.AI_Generated_MyStackTest" time="0.001"/>
-  <testcase name="testNewStackIsEmpty" classname="com.example.AI_Generated_MyStackTest" time="0.002"/>
-  <testcase name="testMultiplePushAndPop" classname="com.example.AI_Generated_MyStackTest" time="0.001"/>
-  <testcase name="testPopReturnsLastPushedElement" classname="com.example.AI_Generated_MyStackTest" time="0"/>
-  <testcase name="testPopFromEmptyStackThrowsException" classname="com.example.AI_Generated_MyStackTest" time="0"/>
-  <testcase name="testPushIncreasesSize" classname="com.example.AI_Generated_MyStackTest" time="0.001"/>
-  <testcase name="testPeekReturnsTopElementWithoutRemovingIt" classname="com.example.AI_Generated_MyStackTest" time="0"/>
+  <testcase name="IllegalStateExceptionOnFullBoundedStackAfterPush" classname="com.example.MyStackTest" time="0.027"/>
+  <testcase name="nullSizeOnConstruction" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="xStaysInStackAfterPeek" classname="com.example.MyStackTest" time="0.002"/>
+  <testcase name="NoSuchElementExceptionOnEmptyStackAfterPop" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="NoSuchElementExceptionOnEmptyStackAfterPeek" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="popTopNTestMoreThanSizeException" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="emptyOnContruction" classname="com.example.MyStackTest" time="0"/>
+  <testcase name="notEmptyNorNullSizeAfterPush" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="popTopNTest1" classname="com.example.MyStackTest" time="0"/>
+  <testcase name="popTopNTest2" classname="com.example.MyStackTest" time="0.001"/>
+  <testcase name="stackEmptyAfterNPushesAndNPops" classname="com.example.MyStackTest" time="0"/>
+  <testcase name="xPopAfterPush" classname="com.example.MyStackTest" time="0"/>
 </testsuite>

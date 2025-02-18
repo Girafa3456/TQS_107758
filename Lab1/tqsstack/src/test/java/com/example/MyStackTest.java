@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 /**
  * Unit test for simple App.
  */
-public class __MyStackTest__
+public class MyStackTest
 {
     private MyStack<Integer> stack;
 
@@ -65,7 +65,6 @@ public class __MyStackTest__
 
     // If the size is n, then after n pops, the stack is empty and has a 
     // size 0
-    @Disabled
     @Test
     void stackEmptyAfterNPushesAndNPops(){
         stack.push(1000);
@@ -102,5 +101,41 @@ public class __MyStackTest__
         stack.push(100);
         stack.push(200);
         assertThrows(IllegalStateException.class, () -> stack.push(300));
+    }
+
+    @Test
+    void popTopNTest1(){
+        stack.push(1);
+        stack.push(3);
+        stack.push(5);
+        stack.push(7);
+        stack.push(9);
+        Integer initial_size = stack.size();
+        Integer lastPopped = stack.popTopN(3);
+
+        assertEquals(initial_size - 3, stack.size());
+
+        assertEquals(5, lastPopped);
+    
+        assertEquals(3, stack.peek());
+    } 
+
+    @Test
+    void popTopNTest2(){
+        stack.push(50);
+        stack.push(100);
+
+        Integer lastPop = stack.popTopN(2);
+
+        assertTrue(stack.isEmpty());
+        assertEquals(50, lastPop);
+    }
+
+    @Test
+    void popTopNTestMoreThanSizeException(){
+        stack.push(100);
+        stack.push(200);
+
+        assertThrows(NoSuchElementException.class, () -> stack.popTopN(3));
     }
 }

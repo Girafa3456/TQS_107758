@@ -45,5 +45,18 @@ public class MyStack<T> {
     public boolean isEmpty(){
         return collection.isEmpty();
     }
+    
+    public T popTopN(int n){
+        // so it doesnt fail despite the high coverage level
+        if (n > collection.size()){
+            throw new NoSuchElementException("Not enought elements to remove");
+        }
+
+        T top = null;
+        for (int i = 0; i < n; i++){
+            top = collection.removeFirst();
+        }
+        return top;
+    }
 
 }
