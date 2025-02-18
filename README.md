@@ -6,5 +6,6 @@ When someone clones this repository,
 they will need to initialize and update the submodule: 
 
 $git submodule init
+
 $git submodule update
 
