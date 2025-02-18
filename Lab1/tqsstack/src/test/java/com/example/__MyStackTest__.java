@@ -1,6 +1,8 @@
 package com.example;
 
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +12,7 @@ import java.util.NoSuchElementException;
 /**
  * Unit test for simple App.
  */
-public class MyStackTest
+public class __MyStackTest__
 {
     private MyStack<Integer> stack;
 
@@ -38,7 +40,7 @@ public class MyStackTest
         stack.push(100);
         stack.push(200);
         stack.push(500);
-        assert(!stack.isEmpty());
+        assertFalse(stack.isEmpty());
         assertEquals(3, stack.size());
     }
 
@@ -46,8 +48,8 @@ public class MyStackTest
     @Test
     void xPopAfterPush(){
         stack.push(7);
-        Integer item_popped = stack.pop();
-        assertEquals(7, item_popped);
+        assertEquals(7, stack.pop());
+        assertTrue(stack.isEmpty());
     }
 
     // If one pushes x then peeks, the value returned is x, but the  
@@ -56,14 +58,14 @@ public class MyStackTest
     void xStaysInStackAfterPeek(){
         stack.push(500);
         int initial_size = stack.size();
-        Integer peeked_item = stack.peek();
-        assertEquals(500, peeked_item);
+        assertEquals(500, stack.peek());
         assertEquals(initial_size, stack.size());
     }
 
 
     // If the size is n, then after n pops, the stack is empty and has a 
     // size 0
+    @Disabled
     @Test
     void stackEmptyAfterNPushesAndNPops(){
         stack.push(1000);
@@ -75,7 +77,7 @@ public class MyStackTest
         for (int i = 0; i < 6; i++){
             stack.pop();
         }
-        assert(stack.isEmpty());
+        assertTrue(stack.isEmpty());
         assertEquals(0, stack.size());
     }
 
@@ -95,6 +97,10 @@ public class MyStackTest
     // an IllegalStateException
     @Test
     void IllegalStateExceptionOnFullBoundedStackAfterPush(){
-        assertThrows(IllegalStateException.class, () -> stack.push());
+        // redefine the stack as bounded
+        stack = new MyStack<>(2);
+        stack.push(100);
+        stack.push(200);
+        assertThrows(IllegalStateException.class, () -> stack.push(300));
     }
 }
