@@ -1,4 +1,6 @@
-# TQS_107758
+# TQS
+Nome: Gonçalo Monteiro
+Nº:   107758
 
 For this repository, because Lab1/tqs_labs_euromillion_unit is a nested Git repository changes applied are: 
 
