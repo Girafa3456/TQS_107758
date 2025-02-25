@@ -1,0 +1,1 @@
+Dos 8 testes realizados ao método passou a 6 sendo que dois deles resultaram erro provando então que o IA não gera métodos 'failproof'.
