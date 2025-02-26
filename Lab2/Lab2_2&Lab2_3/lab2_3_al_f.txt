@@ -1,0 +1,43 @@
+$ mvn test:
+
+-> Executes tests inside src/test/java using the Surefire plugin 
+
+-> Skipps tests with the IT suffix
+
+-> Doesnt build package, only compiles and runs tests
+
+
+
+
+$ mvn package:
+
+-> Builds project
+
+-> Run unit tests
+
+-> Build stops if test fails
+
+
+
+
+$ mvn package -DskipTests=true
+
+-> Builds without having to pass tests (they are ignored)
+
+
+
+
+$ mvn failsafe:integration-test
+
+-> Uses the failsafe plugin instead of Surefire
+
+-> Executes tests that have IT in suffix
+
+-> Skips unit tests
+
+
+
+
+$ mvn install
+
+-> Runs unit tests and integration tests
