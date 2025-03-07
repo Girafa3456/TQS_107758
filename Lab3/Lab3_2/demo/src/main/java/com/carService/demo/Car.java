@@ -6,48 +6,55 @@ import jakarta.persistence.*;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long carId;
     private String model;
-    private String brand;
-    private String type; 
+    private String maker;
 
     // Constructors, getters, and setters
-    public Car(Long id, String model, String brand, String type) {
-        this.id = id;
+    public Car(Long carId, String model, String maker) {
+        this.carId = carId;
         this.model = model;
-        this.brand = brand;
-        this.type = type;
+        this.maker = maker;
     }
 
-    public Long getId(){
-        return this.id;
+    public Long getCarId(){
+        return this.carId;
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public String getMaker() {
+        return this.maker;
     }
 
     public String getModel() {
         return this.model;
     }
 
+    public void setCarId(Long carId){
+        this.carId = carId;
+    }
+
+    public void setMaker(String maker) {
+        this.maker = maker;
+    }
+
     public void setModel(String model) {
         this.model = model;
     }
 
-    public String getBrand() {
-        return this.brand;
+    @Override
+    public String toString(){
+        return "Car " + getCarId() + ":\n" + "Maker: " + getMaker() + "\nModel: " + getModel();
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return carId != null && carId.equals(car.carId);
     }
 }

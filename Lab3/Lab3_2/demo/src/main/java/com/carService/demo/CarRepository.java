@@ -1,5 +1,9 @@
 package com.carService.demo;
 
-public class CarRepository {
-    
+import java.util.List;
+
+public interface CarRepository {
+    public List<Car> findAll();
+
+    public Car findByCarId(Long carId);
 }
