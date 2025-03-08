@@ -1,34 +1,71 @@
 package com.carService.demo;
 
 import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@WebMvcTest(CarManagerServiceImpl.class)
+@SpringBootTest
 class CarManagerServiceTest {
 
     @Mock
     private CarRepository repo;
 
-    @MockBean
-    private CarManagerService service;
+    @InjectMocks
+    private CarManagerServiceImpl service;
+
+    @BeforeEach
+    void setUp() throws Exception{
+        reset(repo);
+    }
 
     @Test
-    void returnListOfCars(){
-        Car car = new Car(1L, "Civic", "Honda");
-        List<Car> cars = List.of(car);
+    public void returnListOfCars(){
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("Civic", "Honda"));
+        cars.add(new Car("Yaris", "Toyota"));
+        
+        
         when(repo.findAll()).thenReturn(cars);
 
         List<Car> result = service.getAllCars();
-        assertEquals(1, result.size());
-        assertEquals("Honda", result.get(0).getMaker());
+        assertEquals(2, result.size());
+        assertThat(result).isEqualTo(cars);
+    }
+
+    @Test
+    public void validCarWhenSaved() {
+        Car car = new Car("Roma", "Ferrari");
+    
+        when(repo.save(car)).thenReturn(car);
+
+        assertThat(service.save(car)).isEqualTo(car);
+    }
+
+    @Test
+    public void getCarDetailsReturnNull() {
+        when(repo.findByCarId(1L)).thenReturn(null);
+
+        assertThat(service.getCarDetails(1L)).isEqualTo(Optional.empty());
+    }
+    
+    
+    @Test
+    public void getCarDetailsReturnCar() {
+        Car car = new Car("Taycan", "Porsche");
+
+        when(repo.findByCarId(car.getId())).thenReturn(car);
+
+        assertThat(service.getCarDetails(car.getId())).isEqualTo(Optional.of(car));
     }
 
 }

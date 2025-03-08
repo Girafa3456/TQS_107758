@@ -11,13 +11,12 @@ public class Car {
     private String maker;
 
     // Constructors, getters, and setters
-    public Car(Long carId, String model, String maker) {
-        this.carId = carId;
+    public Car(String model, String maker) {
         this.model = model;
         this.maker = maker;
     }
 
-    public Long getCarId(){
+    public Long getId(){
         return this.carId;
     }
 
@@ -29,7 +28,7 @@ public class Car {
         return this.model;
     }
 
-    public void setCarId(Long carId){
+    public void setId(Long carId){
         this.carId = carId;
     }
 
@@ -43,7 +42,7 @@ public class Car {
 
     @Override
     public String toString(){
-        return "Car " + getCarId() + ":\n" + "Maker: " + getMaker() + "\nModel: " + getModel();
+        return "Car " + getId() + ":\n" + "Maker: " + getMaker() + "\nModel: " + getModel();
     }
 
     @Override
