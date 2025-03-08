@@ -1,0 +1,21 @@
+# Advantages:
+
+    -> Realistic Testing: Ensures tests reflect actual production conditions and DB-specific behavior (e.g., SQL syntax, constraints).
+    
+    -> Uncovers DB-related Issues: Identifies bugs that may only appear with the actual database engine.
+    
+    -> Production-like Environment: Mimics the production setup, reducing discrepancies between testing and deployment environments.
+    
+    -> Integration with Services: Helps confirm smooth interactions with other services depending on the real database.
+
+# Disadvantages:
+
+    -> Slower Performance: Real databases are slower than in-memory options like H2, affecting test execution time.
+    
+    -> Test Isolation Issues: Data contamination can occur if not managed properly, making tests unreliable.
+    
+    -> Resource Management: Requires a running database instance, adding complexity to the setup and maintenance.
+    
+    -> Database Downtime Risks: Test failures can happen if the database is unavailable during tests.
+    
+    -> Harder to Reset State: More complex to clean and restore the database state between tests.
