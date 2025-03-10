@@ -5,4 +5,5 @@ com/mydriver/HelloWorldFirefoxJupiterTest.class
 com/mydriver/Hello2_2Test.class
 com/mydriver/FlightsPage.class
 com/mydriver/SeleniumIDETest.class
+com/mydriver/DockerTest.class
 com/mydriver/HomePage.class
