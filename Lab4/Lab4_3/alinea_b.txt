@@ -1,0 +1,9 @@
+b) Check the locators being used. Are there any instances of “xpath”? What about identifier-based
+locators? Which locator strategies are more robust?
+
+R: The generated test does not have any By.xpath() using By.cssSelector() instead.
+
+The Identifier-Based Locators in the generated file like By.id() or By.name() are not present instead using CSS selectors.
+
+Using css selectors instead of By.xpath() which can be fragile is a more robust approach but it could be more if in some lines By.id() and By.name() could be used instead to improve robustness due to the fact that they can break if class names change.
+
