@@ -1,0 +1,18 @@
+Execute the test:
+k6 run test.js
+Take note of the following results (metrics):
+• How long did the API call take?
+
+R: avg=83.91ms, min=83.91 e max=83.91
+
+
+• How many requests were made?
+
+
+R: http_reqs foi 1, porque apenas um request foi feito
+
+
+• How many requests failed? (i.e., whose HTTP status code was not 200)
+
+
+R: =0.00%, o que significa que não falhou nenhum (1)

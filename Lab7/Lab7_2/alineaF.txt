@@ -1,0 +1,44 @@
+  █ THRESHOLDS 
+
+    checks
+    ✗ 'rate>0.98' rate=74.16%
+
+    http_req_duration
+    ✗ 'p(95)<1100' p(95)=1.96s
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=51.66%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......................: 13010  144.405637/s
+    checks_succeeded...................: 74.16% 9649 out of 13010
+    checks_failed......................: 25.83% 3361 out of 13010
+
+    ✗ is status 200
+      ↳  48% — ✓ 3144 / ✗ 3361
+    ✓ body size is < 1KB
+
+    HTTP
+    http_req_duration.......................................................: avg=1.11s    min=8.89ms med=1.27s    max=3.07s p(90)=1.8s  p(95)=1.96s
+      { expected_response:true }............................................: avg=660.03ms min=8.89ms med=554.13ms max=2.66s p(90)=1.35s p(95)=1.53s
+    http_req_failed.........................................................: 51.66% 3361 out of 6505
+    http_reqs...............................................................: 6505   72.202819/s
+
+    EXECUTION
+    iteration_duration......................................................: avg=1.12s    min=9.21ms med=1.27s    max=3.07s p(90)=1.8s  p(95)=1.96s
+    iterations..............................................................: 6505   72.202819/s
+    vus.....................................................................: 1      min=1            max=120
+    vus_max.................................................................: 120    min=120          max=120
+
+    NETWORK
+    data_received...........................................................: 2.6 MB 29 kB/s
+    data_sent...............................................................: 2.4 MB 26 kB/s
+
+
+
+
+running (1m30.1s), 000/120 VUs, 6505 complete and 0 interrupted iterations
+default ✓ [==================================] 000/120 VUs  1m30s
+ERRO[0090] thresholds on metrics 'checks, http_req_duration, http_req_failed' have been crossed

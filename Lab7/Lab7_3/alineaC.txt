@@ -1,0 +1,18 @@
+Analyze the results report and try to answer the following questions:
+
+• What metrics are contributing the most to the frontend perceived performance? What do
+they mean?
+
+
+R:  FCP (First Contentful Paint)    -> Time until the first text or image appears on the screen.
+    SI (Speed Index)                ->  Time until the largest visible element (e.g., hero image, heading) loads.
+    LCP (Largest Contentful Paint)  -> How quickly all visible parts of the page display (average time for pixels to paint).
+    TBT (Total Blocking Time)       -> Total time the main thread was blocked (preventing user input) between FCP and interactivity.
+    CLS (Cumulative Layout Shift)   -> Unexpected movement of page elements (e.g., text shifting when an image loads).
+
+• How would you make the site more accessible?
+
+R:
+Audits all metrics
+Simulates real-world conditions (3G, mobile).
+Checks accessibility alongside performance.

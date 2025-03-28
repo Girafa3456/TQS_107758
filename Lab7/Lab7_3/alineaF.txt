@@ -1,0 +1,1 @@
+Pois paginas que demoram a carregar ou APIs com tempo de resposta muito lento frusta utilizadores e aumenta a quantidade de utilizadores a deixarem de usar a aplicaçao e porque melhora a visibilidade em motores de pesquisa .

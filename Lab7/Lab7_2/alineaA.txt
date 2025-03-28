@@ -1,0 +1,12 @@
+Execute the test and take note of:
+• How long did the API calls take on average, minimum and maximum?
+
+R: avg=223.89ms, min=12.95ms e max=1.25s
+
+• How many requests were made?
+
+R: 1365 request, http_reqs: 1365
+
+• How many requests failed? (i.e., whose HTTP status code was not 200)
+
+R: =0.00%, o que significa que não falhou nenhum (1365)
