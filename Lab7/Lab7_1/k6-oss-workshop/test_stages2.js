@@ -4,9 +4,9 @@ import { check } from 'k6';
 export const options = {
     stages: [
     // ramp up from 0 to 20 VUs over the next 30s seconds
-    { duration: '30s', target: 120 },
+    { duration: '30s', target: 70 },
     // run 20 VUs over the next 30 seconds
-    { duration: '30s', target: 120 },
+    { duration: '30s', target: 70 },
     // ramp down from 20 to 0 VUs over the next 30 seconds
     { duration: '30s', target: 0 },
     ],
