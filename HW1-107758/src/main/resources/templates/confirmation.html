@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Booking Confirmed!</h1>
+    <p th:text="'Name: ' + ${reservation.studentName}"></p>
+    <p th:text="'Meal: ' + ${reservation.meal.name}"></p>
+    <p th:text="'Reservation Code: ' + ${reservation.token}"></p>
+    <p>Show this code when arriving at the restaurant to use your meal!</p>
+    <a th:href="@{/restaurants/{id}(id=${reservation.meal.restaurant.id})}">Back to restaurant</a>
+</div>
+</body>
+</html>

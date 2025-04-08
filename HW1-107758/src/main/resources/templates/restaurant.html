@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:inline="javascript">
+<head>
+    <title th:text="${restaurant.name} + ' Meals'"></title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${restaurant.name}"></h1>
+    <p th:text="'Location: ' + ${restaurant.location}"></p>
+
+    <h2>Upcoming Meals:</h2>
+
+    <div th:if="${meals != null and !meals.empty}">
+        <ul>
+            <li th:each="meal : ${meals}">
+                <strong th:text="${meal.date} + ': ' + ${meal.name}"></strong>
+                <p th:text="${meal.description}"></p>
+                <!-- VS Code doesnt understand Thymeleaf syntax in js files -->
+                <p th:text="'Price: $' + ${meal.price}"></p>
+                <form th:attr="onsubmit='submitBooking(event, ' + ${meal.id} + ')'">
+                    <label>Your Name: <input type="text" name="studentName" required></label>
+                    <button type="submit">Book Meal</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <div th:if="${meals == null or meals.empty}">
+        <p>No meals scheduled for the upcoming week.</p>
+    </div>
+</div>
+</body>
+<script src="/js/script.js"></script>
+</html>

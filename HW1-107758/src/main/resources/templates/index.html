@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Meal Booking System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Molicerio University Meal Booking</h1>
+
+    <div th:if="${restaurants != null and !restaurants.empty}">
+        <h2>Select a Restaurant:</h2>
+        <ul>
+            <li th:each="restaurant : ${restaurants}">
+                <a th:href="@{/restaurants/{id}(id=${restaurant.id})}" 
+                   th:text="${restaurant.name + ' - ' + restaurant.location}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
