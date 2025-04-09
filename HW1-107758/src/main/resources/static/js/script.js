@@ -1,12 +1,12 @@
 async function submitBooking(event, mealId) {
     event.preventDefault();
-    console.log("Form submission intercepted"); // Debug log
+    console.log("Form submission intercepted"); 
     
     const form = event.target;
     const studentName = form.studentName.value;
     
     try {
-        console.log("Attempting to book meal", mealId, studentName); // Debug log
+        console.log("Attempting to book meal", mealId, studentName); 
         
         const response = await fetch('/api/bookings/book', {
             method: 'POST',
@@ -19,14 +19,14 @@ async function submitBooking(event, mealId) {
             })
         });
 
-        console.log("Response status:", response.status); // Debug log
+        console.log("Response status:", response.status); 
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const reservation = await response.json();
-        console.log("Reservation created:", reservation); // Debug log
+        console.log("Reservation created:", reservation); 
         
         // Redirect to confirmation page
         window.location.href = `/confirm/${reservation.token}`;

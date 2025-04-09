@@ -16,16 +16,34 @@
         <p th:text="${error}"></p>
     </div>
     
-    <form th:action="@{/worker/verify}" method="post">
-        <label>
-            Enter Reservation Token: 
-            <input type="text" name="token" required>
-        </label>
-        <button type="submit">Verify Reservation</button>
-    </form>
-    
     <div class="actions">
         <a th:href="@{/}" class="button">Back to Home</a>
+    </div>
+
+    <div th:if="${reservations != null and !reservations.empty}">
+        <h2>Pending Reservations</h2>
+        <div class="reservation-cards">
+            <div th:each="reservation : ${reservations}" class="reservation-card">
+                <h3 th:text="${reservation.meal.name}"></h3>
+                <p th:text="'Student: ' + ${reservation.studentName}"></p>
+                <p th:text="'Date: ' + ${reservation.meal.date}"></p>
+                <p th:text="'Restaurant: ' + ${reservation.meal.restaurant.name}"></p>
+                <p th:text="'Token: ' + ${reservation.token}"></p>
+                <p>Status: <span th:text="${reservation.isUsed} ? 'Verified' : 'Pending'" 
+                                th:class="${reservation.isUsed} ? 'status-verified' : 'status-pending'"></span></p>
+                
+                <form th:action="@{/worker/verify/{token}(token=${reservation.token})}" method="post">
+                    <button type="submit" th:disabled="${reservation.isUsed}">
+                        <span th:if="${!reservation.isUsed}">Verify Reservation</span>
+                        <span th:if="${reservation.isUsed}">Already Verified</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div th:if="${reservations == null or reservations.empty}">
+        <p>No pending reservations found.</p>
     </div>
 </div>
 </body>
