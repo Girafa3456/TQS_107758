@@ -79,7 +79,6 @@ public class Meal {
         this.price = price;
     }
 
-    // model/Meal.java
 @Override
 public String toString() {
     return "Meal{" +

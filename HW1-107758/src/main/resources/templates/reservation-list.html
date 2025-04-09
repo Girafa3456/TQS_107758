@@ -12,9 +12,11 @@
     <div th:if="${reservations != null and !reservations.empty}">
         <ul>
             <li th:each="reservation : ${reservations}">
-                <strong th:text="${reservation.meal.name}"></strong>
-                <p th:text="'Date: ' + ${reservation.meal.date}"></p>
-                <p th:text="'Restaurant: ' + ${reservation.meal.restaurant.name}"></p>
+                <strong th:text="${reservation.meal?.name ?: 'N/A'}"></strong>
+                <p th:if="${reservation.meal != null}" th:text="'Date: ' + ${reservation.meal.date}"></p>
+                <p th:if="${reservation.meal == null}">Date: N/A</p>
+                <p th:if="${reservation.meal != null and reservation.meal.restaurant != null}" th:text="'Restaurant: ' + ${reservation.meal.restaurant.name}"></p>
+                <p th:if="${reservation.meal == null or reservation.meal.restaurant == null}">Restaurant: N/A</p>
                 <p th:text="'Reservation Code: ' + ${reservation.token}"></p>
                 <p th:text="'Status: ' + (${reservation.isUsed} ? 'Verified' : 'Not Verified')"></p>
                 
