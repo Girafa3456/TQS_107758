@@ -160,3 +160,34 @@ tr:nth-child(even) {
 .actions .button.worker:hover {
     background-color: #286090;
 }
+
+
+.day-container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.day-container h3 {
+    color: #2c3e50;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+.day-meals {
+    margin-left: 1rem;
+}
+
+.day-meals li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.no-meals {
+    font-style: italic;
+    color: #6c757d;
+}

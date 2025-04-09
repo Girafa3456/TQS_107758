@@ -78,4 +78,15 @@ public class Meal {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    // model/Meal.java
+@Override
+public String toString() {
+    return "Meal{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", date=" + date +
+            ", restaurant=" + (restaurant != null ? restaurant.getName() : "null") +
+            '}';
+}
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      th:inline="javascript">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${restaurant.name} + ' Meals'"></title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
@@ -10,29 +9,36 @@
     <h1 th:text="${restaurant.name}"></h1>
     <p th:text="'Location: ' + ${restaurant.location}"></p>
     
-    <!-- Add the Back to Home button here -->
     <div class="actions">
         <a th:href="@{/}" class="button">Back to Home</a>
     </div>
 
-    <h2>Upcoming Meals:</h2>
+    <h2>Meals for the Week</h2>
 
-    <div th:if="${meals != null and !meals.empty}">
-        <ul>
-            <li th:each="meal : ${meals}">
-                <strong th:text="${meal.date} + ': ' + ${meal.name}"></strong>
-                <p th:text="${meal.description}"></p>
-                <p th:text="'Price: $' + ${meal.price}"></p>
-                <form th:attr="onsubmit='submitBooking(event, ' + ${meal.id} + ')'">
-                    <label>Your Name: <input type="text" name="studentName" required></label>
-                    <button type="submit">Book Meal</button>
-                </form>
-            </li>
-        </ul>
+    <div th:if="${not mealsByDay.isEmpty()}">
+        <div th:each="dayEntry : ${mealsByDay}" class="day-container">
+            <h3 th:text="${dayEntry.key}"></h3>
+            <div th:if="${not dayEntry.value.isEmpty()}" class="day-meals">
+                <ul>
+                    <li th:each="meal : ${dayEntry.value}">
+                        <strong th:text="${meal.name}"></strong>
+                        <p th:text="${meal.description}"></p>
+                        <p th:text="'Price: $' + ${#numbers.formatDecimal(meal.price, 1, 2)}"></p>
+                        <form th:attr="onsubmit='submitBooking(event, ' + ${meal.id} + ')'">
+                            <label>Your Name: <input type="text" name="studentName" required></label>
+                            <button type="submit">Book Meal</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${dayEntry.value.isEmpty()}">
+                <p>No meals scheduled for this day</p>
+            </div>
+        </div>
     </div>
 
-    <div th:if="${meals == null or meals.empty}">
-        <p>No meals scheduled for the upcoming week.</p>
+    <div th:if="${mealsByDay.isEmpty()}">
+        <p>No meals scheduled for this week.</p>
     </div>
 </div>
 </body>
