@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant Reservations</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Restaurant Reservations</h1>
+    
+    <div th:if="${reservations != null and !reservations.empty}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>Student Name</th>
+                    <th>Meal</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.token}"></td>
+                    <td th:text="${reservation.studentName}"></td>
+                    <td th:text="${reservation.meal.name}"></td>
+                    <td th:text="${reservation.meal.date}"></td>
+                    <td th:text="${reservation.isUsed} ? 'Verified' : 'Not Verified'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div th:if="${reservations == null or reservations.empty}">
+        <p>No reservations found.</p>
+    </div>
+    
+    <div class="actions">
+        <a th:href="@{/}" class="button">Back to Home</a>
+    </div>
+</div>
+</body>
+</html>

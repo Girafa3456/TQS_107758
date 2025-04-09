@@ -1,3 +1,4 @@
+<!-- resources/templates/confirmation.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,8 +11,13 @@
     <p th:text="'Name: ' + ${reservation.studentName}"></p>
     <p th:text="'Meal: ' + ${reservation.meal.name}"></p>
     <p th:text="'Reservation Code: ' + ${reservation.token}"></p>
+    <p th:text="'Status: ' + (${reservation.isUsed} ? 'Verified' : 'Not Verified')"></p>
     <p>Show this code when arriving at the restaurant to use your meal!</p>
-    <a th:href="@{/restaurants/{id}(id=${reservation.meal.restaurant.id})}">Back to restaurant</a>
+    
+    <div class="actions">
+        <a th:href="@{/restaurants/{id}(id=${reservation.meal.restaurant.id})}" class="button">Back to Restaurant</a>
+        <a th:href="@{/}" class="button">Back to Home</a>
+    </div>
 </div>
 </body>
 </html>

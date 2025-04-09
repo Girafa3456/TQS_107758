@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Reservations</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Your Reservations</h1>
+    <p th:text="'Student: ' + ${studentName}"></p>
+    
+    <div th:if="${reservations != null and !reservations.empty}">
+        <ul>
+            <li th:each="reservation : ${reservations}">
+                <strong th:text="${reservation.meal.name}"></strong>
+                <p th:text="'Date: ' + ${reservation.meal.date}"></p>
+                <p th:text="'Restaurant: ' + ${reservation.meal.restaurant.name}"></p>
+                <p th:text="'Reservation Code: ' + ${reservation.token}"></p>
+                <p th:text="'Status: ' + (${reservation.isUsed} ? 'Verified' : 'Not Verified')"></p>
+                
+                <form th:action="@{/reservations/cancel/{token}(token=${reservation.token})}" method="post">
+                    <input type="hidden" name="studentName" th:value="${studentName}">
+                    <button type="submit">Cancel Reservation</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    
+    <div th:if="${reservations == null or reservations.empty}">
+        <p>No reservations found.</p>
+    </div>
+    
+    <a th:href="@{/}">Back to Home</a>
+</div>
+</body>
+</html>

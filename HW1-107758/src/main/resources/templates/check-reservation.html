@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Check Reservations</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Check Your Reservations</h1>
+    <form th:action="@{/reservations/check}" method="post">
+        <label>
+            Enter your name: 
+            <input type="text" name="studentName" required>
+        </label>
+        <button type="submit">Check Reservations</button>
+    </form>
+    <a th:href="@{/}">Back to Home</a>
+</div>
+</body>
+</html>

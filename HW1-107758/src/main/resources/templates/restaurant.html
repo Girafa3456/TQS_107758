@@ -9,6 +9,11 @@
 <div class="container">
     <h1 th:text="${restaurant.name}"></h1>
     <p th:text="'Location: ' + ${restaurant.location}"></p>
+    
+    <!-- Add the Back to Home button here -->
+    <div class="actions">
+        <a th:href="@{/}" class="button">Back to Home</a>
+    </div>
 
     <h2>Upcoming Meals:</h2>
 
@@ -17,7 +22,6 @@
             <li th:each="meal : ${meals}">
                 <strong th:text="${meal.date} + ': ' + ${meal.name}"></strong>
                 <p th:text="${meal.description}"></p>
-                <!-- VS Code doesnt understand Thymeleaf syntax in js files -->
                 <p th:text="'Price: $' + ${meal.price}"></p>
                 <form th:attr="onsubmit='submitBooking(event, ' + ${meal.id} + ')'">
                     <label>Your Name: <input type="text" name="studentName" required></label>

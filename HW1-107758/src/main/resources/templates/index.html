@@ -8,6 +8,11 @@
 <div class="container">
     <h1>Welcome to Molicerio University Meal Booking</h1>
 
+    <div class="actions">
+        <a th:href="@{/reservations/check}" class="button">Check Your Reservations</a>
+        <a th:href="@{/worker/check-in}" class="button">Worker Check-In</a>
+    </div>
+
     <div th:if="${restaurants != null and !restaurants.empty}">
         <h2>Select a Restaurant:</h2>
         <ul>
