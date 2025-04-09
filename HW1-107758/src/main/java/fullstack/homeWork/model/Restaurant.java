@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.List;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -19,7 +20,7 @@ public class Restaurant {
     private String name;
     private String location;
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Meal> meals;
 
     public Restaurant(String name, String location) {

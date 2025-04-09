@@ -1,5 +1,6 @@
 package fullstack.homeWork.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import fullstack.homeWork.model.Restaurant;
 import fullstack.homeWork.repo.RestaurantRepository;
@@ -18,7 +19,9 @@ public class RestaurantController {
     }
 
     @GetMapping("/{id}")
-    public Restaurant getRestaurant(@PathVariable Long id) {
-        return restaurantRepo.findById(id).orElseThrow();
+    public ResponseEntity<Restaurant> getRestaurant(@PathVariable Long id) {
+        return restaurantRepo.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 }

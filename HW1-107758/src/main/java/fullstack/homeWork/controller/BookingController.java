@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fullstack.homeWork.model.BookingRequest;
 import fullstack.homeWork.model.Reservation;
 import fullstack.homeWork.services.BookingService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,10 +31,4 @@ public class BookingController {
     public Reservation getReservation(@PathVariable String token) {
         return bookingService.checkReservation(token);
     }
-}
-
-@Data
-class BookingRequest {
-    private Long mealId;
-    private String studentName;
 }

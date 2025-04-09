@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import fullstack.homeWork.repo.RestaurantRepository;
 
 @DataJpaTest
-public class RestaurantRepositoryTest {
+public class RestaurantRepositoryIT {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
