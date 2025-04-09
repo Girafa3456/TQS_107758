@@ -191,3 +191,13 @@ tr:nth-child(even) {
     font-style: italic;
     color: #6c757d;
 }
+
+.weather-info {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.weather-info span {
+    margin-right: 1rem;
+}

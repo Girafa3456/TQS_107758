@@ -11,15 +11,21 @@ import fullstack.homeWork.model.Reservation;
 import fullstack.homeWork.repo.MealRepository;
 import fullstack.homeWork.repo.ReservationRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class BookingService {
     private final MealRepository mealRepo;
     private final ReservationRepository reservationRepo;
 
     public Reservation bookMeal(Long mealId, String studentName) {
-        Meal meal = mealRepo.findById(mealId).orElseThrow();
+        log.info("Attempting to book meal {} for student {}", mealId, studentName);
+        Meal meal = mealRepo.findById(mealId).orElseThrow(() -> {
+            log.error("Meal not found with ID: {}", mealId);
+            return new RuntimeException("Meal not found");
+        });
         
         Reservation reservation = new Reservation();
         reservation.setToken(UUID.randomUUID().toString());
@@ -27,9 +33,22 @@ public class BookingService {
         reservation.setStudentName(studentName);
         reservation.setReservationTime(LocalDateTime.now());
         
+        log.debug("Created reservation: {}", reservation);
         return reservationRepo.save(reservation);
     }
 
+    public Reservation verifyReservation(String token) {
+        log.info("Verifying reservation with token: {}", token);
+        Reservation reservation = reservationRepo.findByToken(token)
+            .orElseThrow(() -> {
+                log.error("Reservation not found with token: {}", token);
+                return new RuntimeException("Reservation not found");
+            });
+        reservation.setUsed(true);
+        log.info("Reservation verified: {}", token);
+        return reservationRepo.save(reservation);
+    }
+        
     public Reservation checkReservation(String token) {
         return reservationRepo.findByToken(token).orElseThrow();
     }
@@ -50,9 +69,5 @@ public class BookingService {
         return reservationRepo.findByMealRestaurantId(restaurantId);
     }
 
-    public Reservation verifyReservation(String token) {
-        Reservation reservation = reservationRepo.findByToken(token).orElseThrow(() -> new RuntimeException("Reservation not found"));
-        reservation.setUsed(true);
-        return reservationRepo.save(reservation);
-    }
+    
 }

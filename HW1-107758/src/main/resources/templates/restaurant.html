@@ -15,12 +15,21 @@
 
     <h2>Meals for the Week</h2>
 
-    <div th:if="${not mealsByDay.isEmpty()}">
-        <div th:each="dayEntry : ${mealsByDay}" class="day-container">
+    <div th:if="${not dayInfo.isEmpty()}">
+        <div th:each="dayEntry : ${dayInfo}" class="day-container">
             <h3 th:text="${dayEntry.key}"></h3>
-            <div th:if="${not dayEntry.value.isEmpty()}" class="day-meals">
+            
+            <!-- Weather display -->
+            <div th:if="${dayEntry.value.weather}" class="weather-info">
+                <span th:text="${dayEntry.value.weatherIcon}"></span>
+                <span th:text="'High: ' + ${#numbers.formatDecimal(dayEntry.value.weather.tempMax, 1, 0)} + '°C'"></span>
+                <span th:text="'Low: ' + ${#numbers.formatDecimal(dayEntry.value.weather.tempMin, 1, 0)} + '°C'"></span>
+            </div>
+            
+            <!-- Meals list -->
+            <div th:if="${not dayEntry.value.meals.empty}" class="day-meals">
                 <ul>
-                    <li th:each="meal : ${dayEntry.value}">
+                    <li th:each="meal : ${dayEntry.value.meals}">
                         <strong th:text="${meal.name}"></strong>
                         <p th:text="${meal.description}"></p>
                         <p th:text="'Price: $' + ${#numbers.formatDecimal(meal.price, 1, 2)}"></p>
@@ -31,13 +40,13 @@
                     </li>
                 </ul>
             </div>
-            <div th:if="${dayEntry.value.isEmpty()}">
-                <p>No meals scheduled for this day</p>
+            <div th:if="${dayEntry.value.meals.empty}">
+                <p class="no-meals">No meals scheduled for this day</p>
             </div>
         </div>
     </div>
 
-    <div th:if="${mealsByDay.isEmpty()}">
+    <div th:if="${dayInfo.isEmpty()}">
         <p>No meals scheduled for this week.</p>
     </div>
 </div>
